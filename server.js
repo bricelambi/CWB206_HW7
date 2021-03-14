@@ -26,6 +26,10 @@ var server = http.createServer(function (request, response) {
         studentForm(request, response);
     } else if (path.startsWith('formsearch')) {
         searchForm(request, response);
+    } else if (path.startsWith('delete')) {
+        deleteForm(request, response);
+    } else if (path.startsWith('removestudent')) {
+        studentDelete(request, response);
     } else {
         response.writeHead(404, { "Content-Type": "text\plain" });
         response.end("Undefined request.");
@@ -51,7 +55,7 @@ function studentForm(request, response) {
 function searchForm(request, response) {
     console.log(request, response);
     if (request.method == "GET") {
-        response.writeHead(200, { "Content-Type": "text\plain" });
+        response.writeHead(200, { "Content-Type": "text\plain" });	
         response.end(`<html>
                     <body>
                         <form method="GET" action="/search">
@@ -64,7 +68,6 @@ function searchForm(request, response) {
 }
 
 //STUDENT: Create a new GET handler that will make a delete form
-
 
 //STUDENT: Create a new POST handler that will delete a student from the database
 
